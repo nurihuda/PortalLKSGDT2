@@ -1,3 +1,6 @@
+// Memanggil komponen Icon secara aman dari window global
+const { IconTrash } = window;
+
 window.AdminPanelComponent = ({ db, setDb, setView, modules, setModules, pesertaList, setPesertaList, schedule, setSchedule }) => {
     const [theme, setTheme] = React.useState(db.theme);
     const [config, setConfig] = React.useState(db.config);
@@ -47,13 +50,13 @@ window.AdminPanelComponent = ({ db, setDb, setView, modules, setModules, peserta
 
     return (
         <div className="space-y-6 max-w-5xl mx-auto pb-12 p-8">
-            <div className="flex items-center justify-between border-b border-slate-200 dark:border-slate-800 pb-4">
+            <div className="flex items-center justify-between border-b border-slate-200 pb-4">
                 <h2 className="text-2xl font-black uppercase">CMS Control Room</h2>
                 <button type="button" onClick={handleSaveAdminCore} className="px-5 py-2 bg-green-600 text-white text-xs font-black uppercase rounded-xl shadow-md">Simpan Perubahan</button>
             </div>
 
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-                <div className="bg-white dark:bg-slate-900 p-5 rounded-2xl border shadow-sm h-fit">
+                <div className="bg-white p-5 rounded-2xl border shadow-sm h-fit">
                     <h3 className="font-bold text-xs text-slate-400 uppercase">🎨 Identitas Web</h3>
                     <div className="mt-3 space-y-3">
                         <input type="text" value={theme.eventName} onChange={e => setTheme({...theme, eventName: e.target.value})} className="w-full px-3 py-2 text-xs rounded-lg border bg-slate-50 focus:outline-none" placeholder="Nama LKS" />
@@ -61,7 +64,7 @@ window.AdminPanelComponent = ({ db, setDb, setView, modules, setModules, peserta
                     </div>
                 </div>
 
-                <div className="lg:col-span-2 bg-white dark:bg-slate-900 p-5 rounded-2xl border shadow-sm">
+                <div className="lg:col-span-2 bg-white p-5 rounded-2xl border shadow-sm">
                     <h3 className="font-bold text-xs text-slate-400 uppercase mb-3">📅 Manajemen Jadwal</h3>
                     <form onSubmit={handleAddSchedule} className="grid grid-cols-2 gap-2 mb-4 bg-slate-50 p-3 rounded-xl border">
                         <input type="text" placeholder="Nama Acara" value={schedTitle} onChange={e => setSchedTitle(e.target.value)} className="col-span-2 px-2 py-1.5 text-xs rounded-md border focus:outline-none" />
@@ -73,14 +76,14 @@ window.AdminPanelComponent = ({ db, setDb, setView, modules, setModules, peserta
                         {schedule.map(s => (
                             <div key={s.id} className="flex justify-between items-center p-2 text-xs border-b">
                                 <span>{s.title} ({new Date(s.start).toLocaleTimeString('id-ID',{hour:'2-digit',minute:'2-digit'})})</span>
-                                <button onClick={() => handleDeleteSchedule(s.id)} className="text-red-500"><window.IconTrash /></button>
+                                <button onClick={() => handleDeleteSchedule(s.id)} className="text-red-500"><IconTrash /></button>
                             </div>
                         ))}
                     </div>
                 </div>
             </div>
 
-            <div className="bg-white dark:bg-slate-900 p-5 rounded-2xl border shadow-sm">
+            <div className="bg-white p-5 rounded-2xl border shadow-sm">
                 <h3 className="font-bold text-xs text-slate-400 uppercase mb-3">👥 Database Peserta</h3>
                 <form onSubmit={handleAddPesertaLocal} className="flex gap-2 mb-4">
                     <input type="text" placeholder="Nama Peserta" value={newNama} onChange={e => setNewNama(e.target.value)} className="w-1/3 px-3 py-1.5 text-xs border rounded-lg focus:outline-none" />
@@ -91,7 +94,7 @@ window.AdminPanelComponent = ({ db, setDb, setView, modules, setModules, peserta
                     {pesertaList.map(p => (
                         <div key={p.nama} className="flex justify-between p-3 text-xs">
                             <span className="font-bold">{p.nama}</span>
-                            <button onClick={() => handleDeletePesertaLocal(p.nama)} className="text-red-500"><window.IconTrash /></button>
+                            <button onClick={() => handleDeletePesertaLocal(p.nama)} className="text-red-500"><IconTrash /></button>
                         </div>
                     ))}
                 </div>
