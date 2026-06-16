@@ -5,27 +5,32 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Portal LKS GDTLAB</title>
     
+    <!-- Favicon Resmi GDTLAB -->
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml;utf8,<svg id='Layer_2' data-name='Layer 2' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 305.3 305.3'><defs><style>.cls-1 { fill: %23ff2741; }</style></defs><g id='_7' data-name='7'><path class='cls-1' d='M152.65,305.3c-8.8,0-15.93-7.13-15.93-15.93v-45.57c0-8.8,7.13-15.93,15.93-15.93s15.93,7.13,15.93,15.93v45.57c0,8.8-7.13,15.93-15.93,15.93Z'/></g><g id='_6' data-name='6'><path class='cls-1' d='M249.33,265.25c-4.08,0-8.15-1.55-11.26-4.67l-32.23-32.23c-6.22-6.22-6.22-16.3,0-22.52s16.3-6.22,22.52,0l32.23,32.23c6.22,6.22,6.22,16.3,0,22.52-3.11,3.11-7.19,4.67-11.26,4.67Z'/></g><g id='_5' data-name='5'><path class='cls-1' d='M289.37,168.58h-45.57c-8.8,0-15.93-7.13-15.93-15.93s7.13-15.93,15.93-15.93h45.57c8.8,0,15.93,7.13,15.93,15.93s-7.13,15.93-15.93,15.93Z'/></g><g id='_4' data-name='4'><path class='cls-1' d='M217.1,104.12c-4.08,0-8.15-1.55-11.26-4.66-6.22-6.22-6.22-16.3,0-22.52l32.23-32.23c6.22-6.22,16.3-6.22,22.52,0,6.22,6.22,6.22,16.3,0,22.52l-32.23,32.23c-3.11,3.11-7.19,4.67-11.26,4.67Z'/></g><g id='_3' data-name='3'><path class='cls-1' d='M152.65,77.43c-8.8,0-15.93-7.13-15.93-15.93V15.93c0-8.8,7.13-15.93,15.93-15.93s15.93,7.13,15.93,15.93v45.57c0,8.8-7.13,15.93-15.93,15.93Z'/></g><g id='_2' data-name='2'><path class='cls-1' d='M88.2,104.12c-4.08,0-8.15-1.55-11.26-4.66l-32.23-32.23c-6.22-6.22-6.22-16.3,0-22.52,6.22-6.22,16.3-6.22,22.52,0l32.23,32.23c6.22,6.22,6.22,16.3,0,22.52-3.11,3.11-7.19,4.67-11.26,4.67Z'/></g><g id='_1' data-name='1'><path class='cls-1' d='M61.5,168.58H15.93c-8.8,0-15.93-7.13-15.93-15.93s7.13-15.93,15.93-15.93h45.57c8.8,0,15.93,7.13,15.93,15.93s-7.13,15.93-15.93,15.93Z'/></g><g id='tongkat'><path class='cls-1' d='M55.97,265.25c-4.08,0-8.15-1.55-11.26-4.67-6.22-6.22-6.22-16.3,0-22.52l96.68-96.68c6.22-6.22,16.3-6.22,22.52,0,6.22,6.22,6.22,16.3,0,22.52l-96.68,96.68c-3.11,3.11-7.19,4.67-11.26,4.67Z'/></g></svg>">
 
+    <!-- Fonts (Google Sans/DM Sans) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700;900&display=swap" rel="stylesheet">
     
+    <!-- Coba tarik font Boldonse dari Google jika ada -->
+    <style>@import url('https://fonts.googleapis.com/css2?family=Boldonse&display=swap');</style>
+
+    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = { darkMode: 'class' }
-    </script>
+    <script>tailwind.config = { darkMode: 'class' }</script>
     
+    <!-- React & Babel -->
     <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
     <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
 
+    <!-- Custom Font & Global Styles -->
     <style>
-        /* Menginjeksi Font Boldnese dari file lokal di GitHub */
+        /* Fallback Font Boldonse dari file lokal jika dari Google gagal */
         @font-face {
-            font-family: 'Boldnese';
-            src: url('boldnese.ttf') format('truetype'),
-                 url('boldnese.otf') format('opentype');
+            font-family: 'Boldonse Local';
+            src: url('boldonse.ttf') format('truetype'), url('boldonse.otf') format('opentype');
             font-weight: normal;
             font-style: normal;
         }
@@ -35,19 +40,21 @@
             overflow: hidden;
         }
 
-        .font-boldnese {
-            font-family: 'Boldnese', 'DM Sans', impact, sans-serif;
+        .font-boldonse {
+            font-family: 'Boldonse', 'Boldonse Local', 'Impact', sans-serif;
             letter-spacing: 1px;
         }
 
         .main-view-scrollbar::-webkit-scrollbar { width: 6px; }
         .main-view-scrollbar::-webkit-scrollbar-track { background: transparent; }
-        .main-view-scrollbar::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.3); border-radius: 10px; }
+        .main-view-scrollbar::-webkit-scrollbar-thumb { background: rgba(0,0,0,0.1); border-radius: 10px; }
+        
+        @keyframes pulse-fast { 0%, 100% { opacity: 1; } 50% { opacity: .4; } }
+        .animate-pulse-fast { animation: pulse-fast 1s cubic-bezier(0.4, 0, 0.6, 1) infinite; }
     </style>
 </head>
-<body class="bg-white dark:bg-slate-950 text-slate-800 dark:text-slate-100">
+<body class="bg-white text-slate-800">
     <div id="root"></div>
-
     <script src="store.js"></script>
     <script type="text/babel" src="components.js"></script>
     <script type="text/babel" src="admin.js"></script>
